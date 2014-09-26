@@ -11,13 +11,13 @@ type Params map[string]string
 type Request func(method string, params *Params) (Response, error)
 
 type Options struct {
-	Key string
+	Key   string
 	Token string
-	Sig string
+	Sig   string
 }
 
-func Client (options *Options) Request {
-	return func (method string, params *Params) (Response, error) {
+func Client(options *Options) Request {
+	return func(method string, params *Params) (Response, error) {
 		url := fmt.Sprintf("flickr.%s&api_key=%s&format=json&nojsoncallback=1", method, options.Key)
 		url = fmt.Sprintf("https://api.flickr.com/services/rest/?method=%s", url)
 
@@ -30,7 +30,7 @@ func Client (options *Options) Request {
 		}
 
 		response, err := http.Get(url)
-    defer response.Body.Close()
+		defer response.Body.Close()
 
 		if err != nil {
 			return nil, err

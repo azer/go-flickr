@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/azer/go-flickr-client"
 	"fmt"
 	"os"
+	"github.com/azer/go-flickr-client"
 )
 
-func main () {
+func main() {
 	client := flickr.Client(&flickr.Options{
 		Key: os.Getenv("FLICKR_API_KEY"),
 	})
