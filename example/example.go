@@ -11,7 +11,7 @@ func main() {
 		Key: os.Getenv("FLICKR_API_KEY"),
 	})
 
-	resp, err := client("people.findByUsername", &flickr.Params{
+	resp, err := client("people.findByUsername", flickr.Params{
 		"username": "azerbike",
 	})
 
