@@ -13,7 +13,7 @@ client := flickr.Client(&flickr.Options{
   sig: "sig"
 })
 
-response, err := client('people.findByUsername', { username: 'azer' })
+response, err := client("people.findByUsername", { username: "azer" })
 
 response["user"]["id"]
 // => 13517180@N00
