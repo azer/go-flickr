@@ -3,11 +3,12 @@ package main
 import (
 	"github.com/azer/go-flickr-client"
 	"fmt"
+	"os"
 )
 
 func main () {
 	client := flickr.Client(&flickr.Options{
-		Key: "8974b9cf7bf473e056125874ad44ce0a",
+		Key: os.Getenv("FLICKR_API_KEY"),
 	})
 
 	resp, err := client("people.findByUsername", &flickr.Params{
