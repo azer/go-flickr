@@ -1,6 +1,6 @@
 ## go-flickr-client
 
-A minimalistic client for Go
+A minimalistic Flickr API client for Go
 
 ```go
 import (
