@@ -8,9 +8,9 @@ import (
 )
 
 client := flickr.Client(&flickr.Options{
-  key: "key",
-  token: "token",
-  sig: "sig"
+  Key: "key",
+  Token: "token",
+  Sig: "sig",
 })
 
 response, err := client("people.findByUsername", { username: "azer" })
