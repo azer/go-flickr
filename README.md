@@ -35,7 +35,7 @@ Find user by name.
 user, err := client.FindUser("azer")
 
 user.Id
-// => 123124324
+// => "123124324"
 
 user.Name
 // => azer
@@ -46,7 +46,7 @@ user.Name
 List given user's favorites
 
 ```go
-userId := 123123123
+userId := "123123123"
 
 favs, err := client.Favs(userId)
 ```
@@ -56,7 +56,7 @@ favs, err := client.Favs(userId)
 List the people given user follows on Flickr
 
 ```go
-userId := 123123123
+userId := "123123123"
 
 following, err := client.Following(userId)
 ```
