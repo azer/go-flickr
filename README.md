@@ -1,4 +1,4 @@
-## go-flickr-client
+## go-flickr
 
 A minimalistic Flickr API client for Go
 
