@@ -7,17 +7,15 @@ import (
 )
 
 func main() {
-	client := flickr.Client(&flickr.Options{
+	client := flickr.Client{
 		Key: os.Getenv("FLICKR_API_KEY"),
-	})
+	}
 
-	resp, err := client("people.findByUsername", flickr.Params{
-		"username": "azerbike",
-	})
+	user, err := client.FindUser("azer")
 
 	if err != nil {
 		fmt.Println(err)
+	} else {
+		fmt.Printf("%s: %s", user.Id, user.Name)
 	}
-
-	fmt.Printf("%v", resp)
 }

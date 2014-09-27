@@ -2,19 +2,61 @@
 
 A minimalistic Flickr API client for Go
 
+## Install
+
+```
+$ go get github.com/azer/go-flickr
+```
+
+## API Reference
+
+## Request
+
 ```go
 import (
-  "github.com/azer/go-flickr-client"
+  "github.com/azer/go-flickr"
 )
 
-client := flickr.Client(&flickr.Options{
+client := &flickr.Client{
   Key: "key",
-  Token: "token",
-  Sig: "sig",
-})
+  Token: "token", // optional
+  Sig: "sig", // optional
+}
 
-response, err := client("people.findByUsername", &flickr.Params{ "username": "azer" })
+response, err := client.Get("people.findByUsername", &flickr.Params{ "username": "azer" })
+// => {"user":{"id":"98269877@N00", "nsid":"98269877@N00", "username":{"_content":"azerbike"}}, "stat":"ok"}
+```
 
-response["user"]["id"]
-// => 13517180@N00
+## FindUser
+
+Find user by name.
+
+```go
+user, err := client.FindUser("azer")
+
+user.Id
+// => 123124324
+
+user.Name
+// => azer
+```
+
+## Favs
+
+List given user's favorites
+
+```go
+userId := 123123123
+
+favs, err := client.Favs(userId)
+```
+
+## Following
+
+List the people given user follows on Flickr
+
+```go
+userId := 123123123
+
+following, err := client.Following(userId)
 ```
