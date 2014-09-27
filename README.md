@@ -8,9 +8,11 @@ A minimalistic Flickr API client for Go
 $ go get github.com/azer/go-flickr
 ```
 
-## API Reference
+## Manual
 
-## Request
+[API Reference](https://godoc.org/github.com/azer/go-flickr)
+
+### Request
 
 ```go
 import (
@@ -27,7 +29,7 @@ response, err := client.Get("people.findByUsername", &flickr.Params{ "username":
 // => {"user":{"id":"98269877@N00", "nsid":"98269877@N00", "username":{"_content":"azerbike"}}, "stat":"ok"}
 ```
 
-## FindUser
+### FindUser
 
 Find user by name.
 
@@ -41,7 +43,7 @@ user.Name
 // => azer
 ```
 
-## Favs
+### Favs
 
 List given user's favorites
 
@@ -51,7 +53,7 @@ userId := "123123123"
 favs, err := client.Favs(userId)
 ```
 
-## Following
+### Following
 
 List the people given user follows on Flickr
 
