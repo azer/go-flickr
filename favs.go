@@ -29,6 +29,29 @@ type FavsRaw struct {
 			Title string
 		}
 	}
+	Stat string
+}
+
+type FavsRaw2 struct {
+	Photos struct {
+		Page int
+		Pages int
+		PerPage int
+		Photo []struct {
+			DateFaved string
+			Farm int
+			Id string
+			IsFamily int
+			IsFriend int
+			IsPublic int
+			Owner string
+			Secret string
+			Server string
+			Title string
+		}
+		Total string
+	}
+	Stat string
 }
 
 func (client *Client) Favs (userId string) ([]Fav, error) {
@@ -38,6 +61,11 @@ func (client *Client) Favs (userId string) ([]Fav, error) {
 
 	raw := &FavsRaw{}
 	err = Parse(response, raw)
+
+	if err != nil {
+		raw := &FavsRaw2{}
+		err = Parse(response, raw)
+	}
 
 	if err != nil {
 		return nil, err

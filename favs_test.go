@@ -11,6 +11,7 @@ func TestFavs(t *testing.T) {
 	}
 
 	favs, err := client.Favs("98269877@N00")
+	//favs, err := client.Favs("38322687@N06")
 
 	if err != nil {
 		t.Error(err)
