@@ -30,11 +30,12 @@ func (client *Client) Request (method string, params Params) ([]byte, error) {
 	}
 
 	response, err := http.Get(url)
-	defer response.Body.Close()
 
 	if err != nil {
 		return nil, err
 	}
+
+	defer response.Body.Close()
 
 	return ioutil.ReadAll(response.Body)
 }

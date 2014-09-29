@@ -4,6 +4,7 @@ type Fav struct {
 	Id string
 	Title string
 	Owner string
+	FavedBy string
 	DateFaved string
 	Farm int
 	Secret string
@@ -17,7 +18,7 @@ type FavsRaw struct {
 		PerPage int
 		Total int
 		Photo []struct {
-			DateFaved string
+			Date_Faved string
 			Farm int
 			Id string
 			IsFamily int
@@ -38,7 +39,7 @@ type FavsRaw2 struct {
 		Pages int
 		PerPage int
 		Photo []struct {
-			DateFaved string
+			Date_Faved string
 			Farm int
 			Id string
 			IsFamily int
@@ -78,7 +79,8 @@ func (client *Client) Favs (userId string) ([]Fav, error) {
 			Id: photo.Id,
 			Title: photo.Title,
 			Owner: photo.Owner,
-			DateFaved: photo.DateFaved,
+			FavedBy: userId,
+			DateFaved: photo.Date_Faved,
 			Farm: photo.Farm,
 			Secret: photo.Secret,
 			Server: photo.Server,
