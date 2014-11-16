@@ -11,11 +11,11 @@ func main() {
 		Key: os.Getenv("FLICKR_API_KEY"),
 	}
 
-	following, err := client.Following("98269877@N00")
+	feed, err := client.Feed("98269877@N00", 100)
 
 	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Printf("%d Following. First user: %s", len(following), following[0].Title)
+		panic(err)
 	}
+
+	fmt.Printf("%d Photos in the feed. First title: %s", len(feed), feed[0].Title)
 }

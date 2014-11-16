@@ -19,5 +19,5 @@ func ExampleRequest() {
 	}
 
 	fmt.Printf("%v", string(resp))
-	// Output: {"user":{"id":"98269877@N00", "nsid":"98269877@N00", "username":{"_content":"azerbike"}}, "stat":"ok"}
+	// Output: {"user":{"id":"98269877@N00","nsid":"98269877@N00","username":{"_content":"azerbike"}},"stat":"ok"}
 }

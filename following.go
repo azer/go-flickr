@@ -1,5 +1,7 @@
 package flickr
 
+import "fmt"
+
 type FollowingRaw struct {
 	Contacts struct {
 		Contact []struct {
@@ -27,7 +29,16 @@ func (client *Client) Following (userId string) ([]User, error) {
 
 	following := []User{}
 
+	ids := make(map[string]bool)
+
 	for _, user := range raw.Contacts.Contact {
+		if _, ok := ids[user.NSID]; ok {
+			fmt.Println(user.NSID)
+			panic(user.NSID)
+		}
+
+		ids[user.NSID] = true
+
 		following = append(following, User{
 			Id: user.NSID,
 			Title: user.Username,
