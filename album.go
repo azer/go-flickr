@@ -8,6 +8,10 @@ type AlbumPhoto struct {
 	Farm   int    `json:"farm"`
 }
 
+func (albumPhoto *AlbumPhoto) URLs() map[string]string {
+	return GenerateURLs(albumPhoto.Id, albumPhoto.Farm, albumPhoto.Secret, albumPhoto.Server, "jpg")
+}
+
 type Album struct {
 	Id      string        `json:"id"`
 	Primary string        `json:"primary"`

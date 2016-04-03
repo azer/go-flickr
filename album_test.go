@@ -32,4 +32,5 @@ func TestAlbum(t *testing.T) {
 		t.Error("First photo id is empty")
 	}
 
+	fmt.Println(album.Photos[0].URLs()["large"])
 }
