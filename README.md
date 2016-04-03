@@ -62,3 +62,11 @@ userId := "123123123"
 
 following, err := client.Following(userId)
 ```
+
+### Album
+
+List photos in the album with given ID
+
+```go
+photos, err := client.Album("72157662053417706")
+```

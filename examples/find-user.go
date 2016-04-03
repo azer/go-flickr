@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/azer/go-flickr"
 	"os"
-	"github.com/azer/go-flickr-client"
 )
 
 func main() {
