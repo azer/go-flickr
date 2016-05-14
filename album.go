@@ -14,6 +14,8 @@ func (albumPhoto *AlbumPhoto) URLs() map[string]string {
 
 type Album struct {
 	Id      string        `json:"id"`
+	Title   string        `json:"title"`
+	Desc    string        `json:"desc"`
 	Primary string        `json:"primary"`
 	Owner   string        `json:"owner"`
 	Photos  []*AlbumPhoto `json:"photos"`
@@ -41,8 +43,33 @@ func (client *Client) Album(id string) (*Album, error) {
 		return nil, err
 	}
 
+	response, err = client.Request("photosets.getInfo", Params{
+		"photoset_id": id,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	info := &struct {
+		PhotoSet struct {
+			Title       struct{
+				Content string `json:"_content"`
+			} `json:"title"`
+			Description struct{
+				Content string `json:"_content"`
+			} `json:"description"`
+		} `json:"photoset"`
+	}{}
+
+	if err := Parse(response, info); err != nil {
+		return nil, err
+	}
+
 	return &Album{
 		Id:      raw.PhotoSet.Id,
+		Title:   info.PhotoSet.Title.Content,
+		Desc:    info.PhotoSet.Description.Content,
 		Primary: raw.PhotoSet.Primary,
 		Owner:   raw.PhotoSet.Owner,
 		Photos:  raw.PhotoSet.Photos,
